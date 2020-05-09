@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+<div th:fragment="navigator">
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <a th:href="@{/customer/add}">Student add form</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <a th:href="@{/customer/list}">Student list</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+        <ul class="nav_list">
+            <li class="nav_item">
+                <a class="nav_link" th:href="@{/customer/add}">Customer add form</a>
+            </li>
+            <li class="nav_item">
+                <a class="nav_link" th:href="@{/customer/list}">Customer list</a>
+            </li>
+        </ul>
+
+</div>
+</body>
+</html>

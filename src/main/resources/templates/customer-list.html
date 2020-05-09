@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+<h1>Student List</h1>
+<div th:replace="fragments :: navigator"></div>
+<table>
+    <thead>
+    <tr>
+        <th class="td_item">Id</th>
+        <th class="td_item">Name</th>
+        <th class="td_item">Surname</th>
+        <th class="td_item">Cars quantity</th>
+        <th class="td_item">Tips</th>
+        <th class="td_item">Rate</th>
+        <th class="td_item"></th>
+        <th class="td_item"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${listOfCustomers}">
+        <td class="td_item" th:text="${customer.id}"></td>
+        <td class="td_item" th:text="${customer.name}"></td>
+        <td class="td_item" th:text="${customer.surname}"></td>
+        <td class="td_item" th:text="${customer.cars_qty}"></td>
+        <td class="td_item" th:text="${customer.tips}"></td>
+        <td class="td_item" th:text="${customer.rate}"></td>
+        <td class="td_item">LINK</td>
+        <td class="td_item">LINK</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
