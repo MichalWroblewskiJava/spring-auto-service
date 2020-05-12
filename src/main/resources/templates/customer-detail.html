@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>customer Details</title>
+    <meta charset="UTF-8">
+    <title>Customer list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+<h1>Details of a customer with id <span th:text="${customerDetails.id}"></span></h1>
+<!--Wklejam navigator-->
+<div th:replace="fragments :: navigator"></div>
+<br/>
+<table>
+    <tr>
+        <td>Id:</td>
+        <td th:text="${customerDetails.id}"></td>
+    </tr>
+    <tr>
+        <td>Name:</td>
+        <td th:text="${customerDetails.name}"></td>
+    </tr>
+    <tr>
+        <td>Surname:</td>
+        <td th:text="${customerDetails.surname}"></td>
+    </tr>
+    <tr>
+        <td>Cars quantity:</td>
+        <td th:text="${customerDetails.cars_qty}"></td>
+    </tr>
+    <tr>
+        <td>Tips:</td>
+        <td th:text="${customerDetails.tips}"></td>
+    </tr>
+    <tr>
+        <td>Rate:</td>
+        <td th:text="${customerDetails.rate}"></td>
+    </tr>
+</table>
+<br/>
+<a th:href="@{/order/add(customer_id=${customerDetails.id})}">Add fault (this customer)</a>
+<table style="border: 1px solid">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Fault</td>
+        <td>Car Plate</td>
+        <td>Paid</td>
+        <td>Date</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="fault : ${customerDetails.customerOrderList}">
+        <td th:text="${fault.id}"></td>
+        <td th:text="${fault.fault}"></td>
+        <td th:text="${fault.car_plate}"></td>
+        <td th:text="${fault.paid}"></td>
+        <td th:text="${fault.dateTime}"></td>
+        <td>
+<!--            <a th:href="@{/fault/edit(orderId=${fault.id})}">Edit</a>-->
+<!--        </td>-->
+        <td>
+<!--            <a th:href="@{/fault/delete(orderId=${fault.id})}">Delete</a>-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-<h1>Student List</h1>
+<h1>customer List</h1>
 <div th:replace="fragments :: navigator"></div>
 <table>
     <thead>
@@ -31,8 +31,15 @@
         <td class="td_item" th:text="${customer.cars_qty}"></td>
         <td class="td_item" th:text="${customer.tips}"></td>
         <td class="td_item" th:text="${customer.rate}"></td>
-        <td class="td_item">LINK</td>
-        <td class="td_item">LINK</td>
+        <td class="td_item">
+            <a th:href="@{/customer/edit(cust_id=${customer.id})}">Edit</a>
+        </td>
+        <td class="td_item">
+            <a th:href="@{/customer/delete(cust_id=${customer.id})}">Delete</a>
+        </td>
+        <td class="td_item">
+            <a th:href="@{/customer/details(cust_id=${customer.id})}">Detail</a>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-<h1>Customer</h1>
+<h1>Customer <span  th:text="${newCustomer.id}"></span></h1>
+<!--<h1>Customer <span  th:text="${customerId}"></span></h1>-->
 <div th:replace="fragments :: navigator"></div>
 <form th:action="@{/customer/add}" th:method="post" th:object="${newCustomer}">
+    <input type="hidden" th:field="*{id}">
     Name: <input th:field="*{name}">
     <br/>
     Surname: <input th:field="*{surname}">
