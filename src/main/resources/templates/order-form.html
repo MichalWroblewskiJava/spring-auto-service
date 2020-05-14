@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Order form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-
+<h1>Fault form for customer: <span th:text="${customerId}"></span></h1>
+<div th:replace="fragments :: navigator"></div>
+<br/>
+<form th:action="@{/order/add}" th:method="post" th:object="${newOrder}">
+    <input type="hidden" name="customerOrdered" th:value="${customerId}">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{dateTime}">
+    Fault:
+    <select th:field="*{fault}">
+        <option th:each="fau : ${faults}"
+                th:value="${fau}"
+                th:text="${fau.getDescription()}">
+        </option>
+    </select>
+    <br/>
+    Car plate: <input type="text" th:field="*{car_plate}"/>
+    <br/>
+    Paid: <input type="checkbox" th:field="*{paid}"/>
+    <br/>
+    <input type="submit">
+</form>
 </body>
 </html>

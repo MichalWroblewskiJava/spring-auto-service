@@ -45,25 +45,27 @@
 <table style="border: 1px solid">
     <thead>
     <tr>
-        <td>Id</td>
-        <td>Fault</td>
-        <td>Car Plate</td>
-        <td>Paid</td>
-        <td>Date</td>
+        <td class="td_item">Id</td>
+        <td class="td_item">Fault</td>
+        <td class="td_item">Car Plate</td>
+        <td class="td_item">Paid</td>
+        <td class="td_item">Date</td>
+        <td class="td_item">Edit</td>
+        <td class="td_item">Delete</td>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="fault : ${customerDetails.customerOrderList}">
-        <td th:text="${fault.id}"></td>
-        <td th:text="${fault.fault}"></td>
-        <td th:text="${fault.car_plate}"></td>
-        <td th:text="${fault.paid}"></td>
-        <td th:text="${fault.dateTime}"></td>
-        <td>
-<!--            <a th:href="@{/fault/edit(orderId=${fault.id})}">Edit</a>-->
-<!--        </td>-->
-        <td>
-<!--            <a th:href="@{/fault/delete(orderId=${fault.id})}">Delete</a>-->
+    <tr th:each="customerOrder : ${customerDetails.customerOrderList}">
+        <td class="td_item" th:text="${customerOrder.id}"></td>
+        <td class="td_item" th:text="${customerOrder.fault.getDescription()}"></td>
+        <td class="td_item" th:text="${customerOrder.car_plate}"></td>
+        <td class="td_item" th:text="${customerOrder.paid}"></td>
+        <td class="td_item" th:text="${customerOrder.dateTime}"></td>
+        <td class="td_item">
+            <a th:href="@{/order/edit(orderId=${customerOrder.id})}">Edit</a>
+        </td>
+        <td  class="td_item">
+            <a th:href="@{/order/delete(orderId=${customerOrder.id})}">Delete</a>
         </td>
     </tr>
     </tbody>
