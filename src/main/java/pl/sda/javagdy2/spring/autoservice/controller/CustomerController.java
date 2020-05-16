@@ -50,7 +50,7 @@ public class CustomerController {
             Customer customer = optionalCustomer.get();
             model.addAttribute("newCustomer", customer);
             model.addAttribute("customerId", customer.getId());
-            //czemu w customer-form nie moge wywowałać tego pola?
+            //czemu w customer-form nie moge wywowałać tego customerId?
             return "customer-form";
         } else {
             return "redirect:/customer/list";

@@ -4,40 +4,40 @@
     <meta charset="UTF-8">
     <title>Customer list</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/main.css">
+    <th:block th:replace="fragments :: styles"/>
 </head>
 <body>
-<h1>customer List</h1>
+<h1>Customer List</h1>
 <div th:replace="fragments :: navigator"></div>
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th class="td_item">Id</th>
-        <th class="td_item">Name</th>
-        <th class="td_item">Surname</th>
-        <th class="td_item">Cars quantity</th>
-        <th class="td_item">Tips</th>
-        <th class="td_item">Rate</th>
-        <th class="td_item"></th>
-        <th class="td_item"></th>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Cars quantity</th>
+        <th scope="col">Tips</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Detail</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="customer : ${listOfCustomers}">
-        <td class="td_item" th:text="${customer.id}"></td>
-        <td class="td_item" th:text="${customer.name}"></td>
-        <td class="td_item" th:text="${customer.surname}"></td>
-        <td class="td_item" th:text="${customer.cars_qty}"></td>
-        <td class="td_item" th:text="${customer.tips}"></td>
-        <td class="td_item" th:text="${customer.rate}"></td>
-        <td class="td_item">
+        <td scope="row" th:text="${customer.id}"></td>
+        <td  th:text="${customer.name}"></td>
+        <td  th:text="${customer.surname}"></td>
+        <td  th:text="${customer.cars_qty}"></td>
+        <td  th:text="${customer.tips}"></td>
+        <td  th:text="${customer.rate}"></td>
+        <td >
             <a th:href="@{/customer/edit(cust_id=${customer.id})}">Edit</a>
         </td>
-        <td class="td_item">
+        <td >
             <a th:href="@{/customer/delete(cust_id=${customer.id})}">Delete</a>
         </td>
-        <td class="td_item">
+        <td >
             <a th:href="@{/customer/details(cust_id=${customer.id})}">Detail</a>
         </td>
     </tr>
