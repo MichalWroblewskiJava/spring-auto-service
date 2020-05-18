@@ -5,36 +5,33 @@
     <title>Fragments</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <th:block th:fragment="styles">
-        <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet">
-        <link th:href="@{/styles/main.css}" rel="stylesheet">
+        <link th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" >
+        <link th:href="@{/css/style.css}" rel="stylesheet" >
     </th:block>
 </head>
 <body>
 <div th:fragment="navigator">
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <td>-->
-<!--                <a th:href="@{/customer/add}">S2tudent add form</a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>-->
-<!--                <a th:href="@{/customer/list}">S2tudent list</a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
-        <ul class="nav_list">
-            <li class="nav_item">
-                <a class="nav_link" th:href="@{/}">Home</a>
-            </li>
-            <li class="nav_item">
-                <a class="nav_link" th:href="@{/customer/add}">Customer add form</a>
-            </li>
-            <li class="nav_item">
-                <a class="nav_link" th:href="@{/customer/list}">Customer list</a>
-            </li>
-        </ul>
-
+    <nav class="site-header sticky-top py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2" href="#" aria-label="Product">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
+                     viewBox="0 0 24 24" focusable="false"><title>Product</title>
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
+                </svg>
+            </a>
+            <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Home</a>
+            <a class="py-2 d-none d-md-inline-block" th:href="@{/customer/add}">Customer add form</a>
+            <a class="py-2 d-none d-md-inline-block" th:href="@{/customer/list}">Customer list</a>
+        </div>
+    </nav>
 </div>
+
+<th:block th:fragment="scripts">
+<script th:src="@{/webjars/jquery/3.4.1/dist/jquery.slim.min.js}" ></script>
+<script th:src="@{/webjars/popper.js/1.16.0/dist/umd/popper.min.js}" ></script>
+<script th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+</th:block>
 </body>
 </html>

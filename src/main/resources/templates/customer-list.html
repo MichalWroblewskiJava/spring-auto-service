@@ -7,8 +7,10 @@
     <th:block th:replace="fragments :: styles"/>
 </head>
 <body>
-<h1>Customer List</h1>
+
 <div th:replace="fragments :: navigator"></div>
+
+<h1>Customer List</h1>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -43,5 +45,6 @@
     </tr>
     </tbody>
 </table>
+<th:block th:replace="fragments :: scripts"/>
 </body>
 </html>

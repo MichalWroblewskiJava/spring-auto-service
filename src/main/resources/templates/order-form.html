@@ -7,26 +7,59 @@
     <th:block th:replace="fragments :: styles"/>
 </head>
 <body>
-<h1>Fault form for customer: <span th:text="${customerId}"></span></h1>
+
 <div th:replace="fragments :: navigator"></div>
-<br/>
-<form th:action="@{/order/add}" th:method="post" th:object="${newOrder}">
-    <input type="hidden" name="customerOrdered" th:value="${customerId}">
-    <input type="hidden" th:field="*{id}">
-    <input type="hidden" th:field="*{dateTime}">
-    Fault:
-    <select th:field="*{fault}">
-        <option th:each="fau : ${faults}"
-                th:value="${fau}"
-                th:text="${fau.getDescription()}">
-        </option>
-    </select>
-    <br/>
-    Car plate: <input type="text" th:field="*{car_plate}"/>
-    <br/>
-    Paid: <input type="checkbox" th:field="*{paid}"/>
-    <br/>
-    <input type="submit">
-</form>
+<div class="container">
+    <div class="row">
+        <h1>Fault form for customer: <span th:text="${customerId}"></span></h1>
+    </div>
+    <form class="container" th:action="@{/order/add}" th:method="post" th:object="${newOrder}">
+        <input type="hidden" name="customerOrdered" th:value="${customerId}">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{dateTime}">
+
+        <div class="row">
+            <div class="col-4">
+                <label for="fault">Fault:</label>
+            </div>
+            <div class="col-8">
+                <select class="form-control" th:field="*{fault}">
+                    <option th:each="fau : ${faults}"
+                            th:value="${fau}"
+                            th:text="${fau.getDescription()}" id="fault">
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <label for="car_plate">Car plate</label>
+            </div>
+            <div class="col-8">
+                <input class="form-control" type="text" th:field="*{car_plate}" id="car_plate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label for="paid">Paid</label>
+            </div>
+            <div class="col-8">
+                <input class="form-control" type="checkbox" th:field="*{paid}" id="paid">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-8">
+                <input class="form-control" type="submit">
+            </div>
+        </div>
+
+    </form>
+</div>
+</div>
+<th:block th:replace="fragments :: scripts"/>
 </body>
 </html>

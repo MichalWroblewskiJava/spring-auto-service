@@ -7,27 +7,73 @@
     <th:block th:replace="fragments :: styles"/>
 </head>
 <body>
-<h1>Customer <span  th:text="${newCustomer.id}"></span></h1>
+
 <!--<h1>Customer <span  th:text="${customerId}"></span></h1>-->
 <div th:replace="fragments :: navigator"></div>
-<form th:action="@{/customer/add}" th:method="post" th:object="${newCustomer}">
-    <input type="hidden" th:field="*{id}">
-    Name: <input th:field="*{name}">
-    <br/>
-    Surname: <input th:field="*{surname}">
-    <br/>
-    Cars quantity: <input type="number" step="1" min="1" th:field="*{cars_qty}">
-    <br/>
-    Tips: <input type="checkbox" th:field="*{tips}">
-    <br/>
-    Rate: <input type="number" step="1" min="0" th:field="*{rate}">
-    <br/>
-    <input type="submit">
-</form>
 
+<div class="container">
+    <div class="row">
+        <h1>Customer form <span th:text="${newCustomer.id}"></span></h1>
+    </div>
+    <form class="container" th:action="@{/customer/add}" th:method="post" th:object="${newCustomer}">
+        <input type="hidden" th:field="*{id}">
 
+        <div class="row">
+            <div class="col-4">
+                <label for="name">Name</label>
+            </div>
+            <div class="col-8">
+                <input class="form-control" type="text" th:field="*{name}" id="name">
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-4">
+                <label for="surname">Surname</label>
+            </div>
+            <div class="col-8">
+                <input class="form-control"type="text" th:field="*{surname}" id="surname">
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-4">
+                <label for="cars_qty">Cars quantity</label>
+            </div>
+            <div class="col-8">
+                <input class="form-control"type="number" step="1" min="1"  th:field="*{cars_qty}" id="cars_qty">
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-4">
+                <label for="tips">Tips</label>
+            </div>
+            <div class="col-8">
+                <input class="form-control" type="checkbox" th:field="*{tips}" id="tips">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label for="rate">Rate</label>
+            </div>
+            <div class="col-8">
+                <input class="form-control" type="number" step="1" min="0" th:field="*{rate}" id="rate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-8">
+                <input class="form-control" type="submit">
+            </div>
+        </div>
+        <br/>
+
+    </form>
+</div>
+</div>
+<th:block th:replace="fragments :: scripts"/>
 </body>
 </html>

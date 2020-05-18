@@ -9,65 +9,68 @@
     <th:block th:replace="fragments :: styles"/>
 </head>
 <body>
-<h1>Details of a customer with id <span th:text="${customerDetails.id}"></span></h1>
+
 <!--Wklejam navigator-->
 <div th:replace="fragments :: navigator"></div>
+<h1>Details of a customer with id <span th:text="${customerDetails.id}"></span></h1>
 <br/>
-<table>
-    <tr>
-        <td>Id:</td>
-        <td th:text="${customerDetails.id}"></td>
-    </tr>
-    <tr>
-        <td>Name:</td>
-        <td th:text="${customerDetails.name}"></td>
-    </tr>
-    <tr>
-        <td>Surname:</td>
-        <td th:text="${customerDetails.surname}"></td>
-    </tr>
-    <tr>
-        <td>Cars quantity:</td>
-        <td th:text="${customerDetails.cars_qty}"></td>
-    </tr>
-    <tr>
-        <td>Tips:</td>
-        <td th:text="${customerDetails.tips}"></td>
-    </tr>
-    <tr>
-        <td>Rate:</td>
-        <td th:text="${customerDetails.rate}"></td>
-    </tr>
-</table>
-<br/>
-<a th:href="@{/order/add(customer_id=${customerDetails.id})}">Add fault (this customer)</a>
-<table style="border: 1px solid">
+<table class="table table-striped">
     <thead>
     <tr>
-        <td class="td_item">Id</td>
-        <td class="td_item">Fault</td>
-        <td class="td_item">Car Plate</td>
-        <td class="td_item">Paid</td>
-        <td class="td_item">Date</td>
-        <td class="td_item">Edit</td>
-        <td class="td_item">Delete</td>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Cars quantity</th>
+        <th scope="col">Tips</th>
+        <th scope="col">Rate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td scope="row" th:text="${customerDetails.id}"></td>
+        <td th:text="${customerDetails.name}"></td>
+        <td th:text="${customerDetails.surname}"></td>
+        <td th:text="${customerDetails.cars_qty}"></td>
+        <td th:text="${customerDetails.tips}"></td>
+        <td th:text="${customerDetails.rate}"></td>
+
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<a th:href="@{/order/add(customer_id=${customerDetails.id})}">Add fault (this customer)</a>
+<br/>
+<br/>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Fault</th>
+        <th scope="col">Car plate</th>
+        <th scope="col">Paid</th>
+        <th scope="col">Date</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+
     </tr>
     </thead>
     <tbody>
     <tr th:each="customerOrder : ${customerDetails.customerOrderList}">
-        <td class="td_item" th:text="${customerOrder.id}"></td>
-        <td class="td_item" th:text="${customerOrder.fault.getDescription()}"></td>
-        <td class="td_item" th:text="${customerOrder.car_plate}"></td>
-        <td class="td_item" th:text="${customerOrder.paid}"></td>
-        <td class="td_item" th:text="${customerOrder.dateTime}"></td>
-        <td class="td_item">
+        <td scope="row" th:text="${customerOrder.id}"></td>
+        <td th:text="${customerOrder.fault.getDescription()}"></td>
+        <td th:text="${customerOrder.car_plate}"></td>
+        <td th:text="${customerOrder.paid}"></td>
+        <td th:text="${customerOrder.dateTime}"></td>
+        <td>
             <a th:href="@{/order/edit(orderId=${customerOrder.id})}">Edit</a>
         </td>
-        <td  class="td_item">
+        <td>
             <a th:href="@{/order/delete(orderId=${customerOrder.id})}">Delete</a>
         </td>
     </tr>
     </tbody>
 </table>
+<th:block th:replace="fragments :: scripts"/>
 </body>
 </html>
